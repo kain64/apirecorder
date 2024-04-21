@@ -9,6 +9,11 @@ import java.util.List;
 @RestController("test")
 @Log4j2
 public class TestController {
+    @GetMapping("/get2")
+    TestDto get2(@RequestParam Long id, @RequestParam String name){
+        log.debug("GET call");
+        return new TestDto(id, name, List.of("test","test1", "test2"));
+    }
     @GetMapping("/get/{id}/{name}")
     TestDto get(@PathVariable Long id, @PathVariable String name){
         log.debug("GET call");
